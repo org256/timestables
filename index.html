@@ -21,6 +21,8 @@
   <script>
    const min_a = 2;
    const max_a = 12;
+   const min_b = 6;
+   const max_b = 6;
    let correct_answer = null;
    let prompt_time = null;
 
@@ -28,13 +30,13 @@
     let table_element = document.getElementById('table');
 
     let innerHtml = '<th>';
-    for (let x = min_a; x <= max_a; x++) {
-     innerHtml += '<th style="width:1.5em">' + x;
+    for (let a = min_a; a <= max_a; a++) {
+     innerHtml += '<th style="width:1.5em">' + a;
     }
-    for (let y = min_a; y <= max_a; y++) {
-     innerHtml += '<tr><th>' + y;
-     for (let x = min_a; x <= max_a; x++) {
-      innerHtml += '<td id="quickest_' + x + 'x' + y + '=" style="background-color:#888">';
+    for (let b = min_b; b <= max_b; b++) {
+     innerHtml += '<tr><th>' + b;
+     for (let a = min_a; a <= max_a; a++) {
+      innerHtml += '<td id="quickest_' + a + 'x' + b + '=" style="background-color:#888">';
      }
     }
 
@@ -42,7 +44,8 @@
    }
 
    function response_keypress(e) {
-    if (e.code == 'Enter') {
+    if ((e.code == 'Enter') || (e.code == 'Space')) {
+     e.preventDefault();
      prompt();
     }
    }
@@ -80,7 +83,7 @@
     }
 
     let a = min_a + Math.floor((1 + max_a - min_a) * Math.random());
-    let b = min_a + Math.floor((1 + max_a - min_a) * Math.random());
+    let b = min_b + Math.floor((1 + max_b - min_b) * Math.random());
 
     correct_answer = a * b;
 
