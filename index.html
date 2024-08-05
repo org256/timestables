@@ -9,7 +9,7 @@
  <body>
   <h2>Question</h2>
   <span id="prompt"></span>
-  <input id="response" type="text" autocomplete="off" onkeypress="response_keypress(event)"></input>
+  <input id="response" type="text" autocomplete="off" inputmode="numeric" onkeypress="response_keypress(event)"></input>
   <div id="feedback">&nbsp;</div>
   <hr>
   <h2>Heat Map</h2>
@@ -44,7 +44,7 @@
    }
 
    function response_keypress(e) {
-    if ((e.code == 'Enter') || (e.code == 'Space')) {
+    if ((e.keyCode == 13) || (e.keyCode == 32)) { // enter or space
      e.preventDefault();
      prompt();
     }
